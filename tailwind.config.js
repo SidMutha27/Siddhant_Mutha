@@ -5,6 +5,7 @@ module.exports = {
   theme: {
     extend: {
       fontFamily: {
+        rozha: ['"Rozha One"', 'serif'],
         space: ['"Space Grotesk"', 'sans-serif'],
         inter: ['"Inter"', 'sans-serif'],
         mono: ['"JetBrains Mono"', 'monospace'],

@@ -5,14 +5,20 @@ import { Link } from 'react-router';
 
 interface HeroSectionProps {
   isLoaded: boolean;
+  heroVideoPlayed: boolean;
+  onHeroVideoPlayed: () => void;
 }
 
-export default function HeroSection({ isLoaded }: HeroSectionProps) {
-  const [videoPhase, setVideoPhase] = useState<'playing' | 'flash' | 'fading' | 'complete'>('playing');
-  const [showContent, setShowContent] = useState(false);
+export default function HeroSection({ isLoaded, heroVideoPlayed, onHeroVideoPlayed }: HeroSectionProps) {
+  const [videoPhase, setVideoPhase] = useState<'playing' | 'flash' | 'fading' | 'complete'>(() =>
+    heroVideoPlayed ? 'complete' : 'playing'
+  );
+  const [showContent, setShowContent] = useState(heroVideoPlayed);
   const videoRef = useRef<HTMLVideoElement>(null);
 
   useEffect(() => {
+    // If hero video already played this session, skip the whole video sequence
+    if (heroVideoPlayed) return;
     if (!isLoaded) return;
 
     const video = videoRef.current;
@@ -24,7 +30,8 @@ export default function HeroSection({ isLoaded }: HeroSectionProps) {
     video.play().catch(() => {
       // If autoplay fails, skip video
       setVideoPhase('complete');
-      setTimeout(() => setShowContent(true), 300);
+      setShowContent(true);
+      onHeroVideoPlayed();
     });
 
     // Let the video play to natural completion
@@ -35,7 +42,10 @@ export default function HeroSection({ isLoaded }: HeroSectionProps) {
         setVideoPhase('fading');
         setTimeout(() => {
           setVideoPhase('complete');
-          setTimeout(() => setShowContent(true), 200);
+          setTimeout(() => {
+            setShowContent(true);
+            onHeroVideoPlayed();
+          }, 200);
         }, 600);
       }, 300);
     };
@@ -49,6 +59,7 @@ export default function HeroSection({ isLoaded }: HeroSectionProps) {
         setTimeout(() => {
           setVideoPhase('complete');
           setShowContent(true);
+          onHeroVideoPlayed();
         }, 500);
       }
     }, 12000);
@@ -58,33 +69,35 @@ export default function HeroSection({ isLoaded }: HeroSectionProps) {
       clearTimeout(fallbackTimer);
     };
   // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [isLoaded]);
+  }, [isLoaded, heroVideoPlayed]);
 
   return (
     <section
       id="home"
       className="relative min-h-screen flex items-center justify-center overflow-hidden"
     >
-      {/* Video Layer */}
-      <motion.div
-        initial={{ opacity: 1 }}
-        animate={{
-          opacity: videoPhase === 'complete' ? 0 : videoPhase === 'fading' ? 0.3 : 1,
-          scale: videoPhase === 'complete' ? 1.1 : 1,
-        }}
-        transition={{ duration: 0.8 }}
-        className="absolute inset-0 z-10"
-      >
-        <video
-          ref={videoRef}
-          className="w-full h-full object-cover"
-          src="./assets/hero-video.mp4"
-          muted
-          playsInline
-          preload="auto"
-        />
-        <div className="absolute inset-0 bg-black/40" />
-      </motion.div>
+      {/* Video Layer — only shown when video hasn't been played yet this session */}
+      {!heroVideoPlayed && (
+        <motion.div
+          initial={{ opacity: 1 }}
+          animate={{
+            opacity: videoPhase === 'complete' ? 0 : videoPhase === 'fading' ? 0.3 : 1,
+            scale: videoPhase === 'complete' ? 1.1 : 1,
+          }}
+          transition={{ duration: 0.8 }}
+          className="absolute inset-0 z-10"
+        >
+          <video
+            ref={videoRef}
+            className="w-full h-full object-cover"
+            src="./assets/hero-video.mp4"
+            muted
+            playsInline
+            preload="auto"
+          />
+          <div className="absolute inset-0 bg-black/40" />
+        </motion.div>
+      )}
 
       {/* GRB Flash overlay */}
       <motion.div
@@ -98,7 +111,7 @@ export default function HeroSection({ isLoaded }: HeroSectionProps) {
 
       {/* Galaxy Background Layer */}
       <motion.div
-        initial={{ opacity: 0 }}
+        initial={{ opacity: heroVideoPlayed ? 1 : 0 }}
         animate={{
           opacity: videoPhase === 'complete' ? 1 : 0,
         }}
@@ -158,7 +171,7 @@ export default function HeroSection({ isLoaded }: HeroSectionProps) {
           initial={{ opacity: 0, y: 30 }}
           animate={showContent ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.7, delay: 0.2 }}
-          className="font-space text-4xl md:text-6xl lg:text-7xl font-bold text-white mb-4 tracking-tight"
+          className="font-rozha text-4xl md:text-6xl lg:text-7xl font-normal text-white mb-4 tracking-tight"
         >
           Siddhant <span className="text-gradient">Mutha</span>
         </motion.h1>
@@ -168,9 +181,9 @@ export default function HeroSection({ isLoaded }: HeroSectionProps) {
           initial={{ opacity: 0, y: 20 }}
           animate={showContent ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.7, delay: 0.35 }}
-          className="font-mono text-sm md:text-base text-gold-soft/80 tracking-widest uppercase mb-6"
+          className="font-mono text-sm md:text-base text-gold-soft tracking-widest uppercase mb-6 font-medium"
         >
-          Physics & Electronics Researcher
+          Physics &amp; Electronics Researcher
         </motion.p>
 
         {/* Description */}
@@ -178,7 +191,7 @@ export default function HeroSection({ isLoaded }: HeroSectionProps) {
           initial={{ opacity: 0, y: 20 }}
           animate={showContent ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.7, delay: 0.5 }}
-          className="max-w-2xl mx-auto text-white/60 text-base md:text-lg leading-relaxed mb-10"
+          className="max-w-2xl mx-auto text-white/90 text-base md:text-lg leading-relaxed mb-10"
         >
           Exploring the universe through radio astronomy, instrumentation, and scientific computing.
           Currently researching Fast Radio Bursts at NCRA-TIFR while pursuing degrees in Physics and Electronic Systems.

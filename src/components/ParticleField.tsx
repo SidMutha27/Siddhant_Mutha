@@ -66,17 +66,17 @@ export default function ParticleField({
     // Initialize particles with layered distribution
     const particles: Particle[] = [];
 
-    // Dim background stars — many, small, faint
+    // Dim background stars — many, small, clearly visible
     const dimCount = Math.floor(particleCount * 0.65);
     for (let i = 0; i < dimCount; i++) {
       particles.push({
         x: Math.random() * canvas.width,
         y: Math.random() * canvas.height,
-        size: Math.random() * 0.8 + 0.3,
+        size: Math.random() * 0.9 + 0.4,
         speedX: (Math.random() - 0.5) * 0.08,
         speedY: (Math.random() - 0.5) * 0.08,
-        opacity: Math.random() * 0.25 + 0.08,
-        twinkleSpeed: Math.random() * 0.008 + 0.002,
+        opacity: Math.random() * 0.35 + 0.25,
+        twinkleSpeed: Math.random() * 0.008 + 0.003,
         twinklePhase: Math.random() * Math.PI * 2,
         color: starColors[Math.floor(Math.random() * starColors.length)],
         layer: 'dim',
@@ -89,28 +89,28 @@ export default function ParticleField({
       particles.push({
         x: Math.random() * canvas.width,
         y: Math.random() * canvas.height,
-        size: Math.random() * 1.2 + 0.6,
+        size: Math.random() * 1.3 + 0.8,
         speedX: (Math.random() - 0.5) * 0.12,
         speedY: (Math.random() - 0.5) * 0.12,
-        opacity: Math.random() * 0.35 + 0.2,
-        twinkleSpeed: Math.random() * 0.015 + 0.005,
+        opacity: Math.random() * 0.35 + 0.45,
+        twinkleSpeed: Math.random() * 0.015 + 0.006,
         twinklePhase: Math.random() * Math.PI * 2,
         color: starColors[Math.floor(Math.random() * starColors.length)],
         layer: 'medium',
       });
     }
 
-    // Bright foreground stars — few, larger, brighter
+    // Bright foreground stars — few, larger, prominent JWST-like glow
     const brightCount = particleCount - dimCount - medCount;
     for (let i = 0; i < brightCount; i++) {
       particles.push({
         x: Math.random() * canvas.width,
         y: Math.random() * canvas.height,
-        size: Math.random() * 1.5 + 1.0,
+        size: Math.random() * 1.6 + 1.2,
         speedX: (Math.random() - 0.5) * 0.15,
         speedY: (Math.random() - 0.5) * 0.15,
-        opacity: Math.random() * 0.4 + 0.35,
-        twinkleSpeed: Math.random() * 0.025 + 0.008,
+        opacity: Math.random() * 0.25 + 0.72,
+        twinkleSpeed: Math.random() * 0.025 + 0.01,
         twinklePhase: Math.random() * Math.PI * 2,
         color: starColors[Math.floor(Math.random() * starColors.length)],
         layer: 'bright',
@@ -118,12 +118,12 @@ export default function ParticleField({
     }
     particlesRef.current = particles;
 
-    // Initialize nebula blobs — very faint, large, atmospheric
+    // Initialize nebula blobs — moderately visible cosmic dust clouds
     const nebulae: NebulaBlob[] = [
-      { x: canvas.width * 0.15, y: canvas.height * 0.25, radius: 200, color: [100, 50, 180], opacity: 0.015 },
-      { x: canvas.width * 0.75, y: canvas.height * 0.6, radius: 250, color: [40, 80, 160], opacity: 0.012 },
-      { x: canvas.width * 0.5, y: canvas.height * 0.8, radius: 180, color: [160, 60, 80], opacity: 0.01 },
-      { x: canvas.width * 0.85, y: canvas.height * 0.15, radius: 150, color: [60, 130, 140], opacity: 0.008 },
+      { x: canvas.width * 0.15, y: canvas.height * 0.25, radius: 240, color: [110, 60, 200], opacity: 0.035 },
+      { x: canvas.width * 0.75, y: canvas.height * 0.6, radius: 280, color: [50, 95, 180], opacity: 0.03 },
+      { x: canvas.width * 0.5, y: canvas.height * 0.8, radius: 220, color: [180, 70, 95], opacity: 0.025 },
+      { x: canvas.width * 0.85, y: canvas.height * 0.15, radius: 180, color: [70, 145, 160], opacity: 0.025 },
     ];
     nebulaRef.current = nebulae;
 
@@ -190,18 +190,18 @@ export default function ParticleField({
         ctx.fill();
 
         // Glow for bright stars
-        if (particle.layer === 'bright' && particle.size > 1.2) {
+        if (particle.layer === 'bright' && particle.size > 1.1) {
           ctx.beginPath();
-          ctx.arc(particle.x, particle.y, particle.size * 2.5, 0, Math.PI * 2);
-          ctx.fillStyle = `rgba(${r}, ${g}, ${b}, ${alpha * 0.06})`;
+          ctx.arc(particle.x, particle.y, particle.size * 2.8, 0, Math.PI * 2);
+          ctx.fillStyle = `rgba(${r}, ${g}, ${b}, ${alpha * 0.12})`;
           ctx.fill();
 
-          // Cross-spike effect for the brightest
-          if (particle.size > 1.8) {
-            ctx.globalAlpha = alpha * 0.12;
+          // Cross-spike effect for the brightest stars (JWST signature diffraction)
+          if (particle.size > 1.5) {
+            ctx.globalAlpha = alpha * 0.22;
             ctx.strokeStyle = `rgba(${r}, ${g}, ${b}, 1)`;
-            ctx.lineWidth = 0.5;
-            const spikeLen = particle.size * 3;
+            ctx.lineWidth = 0.6;
+            const spikeLen = particle.size * 3.5;
             ctx.beginPath();
             ctx.moveTo(particle.x - spikeLen, particle.y);
             ctx.lineTo(particle.x + spikeLen, particle.y);
@@ -215,10 +215,10 @@ export default function ParticleField({
         }
 
         // Subtle warm glow for medium+
-        if (particle.layer !== 'dim' && particle.size > 1.0) {
+        if (particle.layer !== 'dim' && particle.size > 0.9) {
           ctx.beginPath();
-          ctx.arc(particle.x, particle.y, particle.size * 3, 0, Math.PI * 2);
-          ctx.fillStyle = `rgba(245, 158, 11, ${alpha * 0.03})`;
+          ctx.arc(particle.x, particle.y, particle.size * 2.5, 0, Math.PI * 2);
+          ctx.fillStyle = `rgba(245, 158, 11, ${alpha * 0.05})`;
           ctx.fill();
         }
       });

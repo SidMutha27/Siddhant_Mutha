@@ -1,22 +1,11 @@
 import { motion, useInView } from 'framer-motion';
 import { useRef } from 'react';
-import { skillCategories, languages } from '@/data/portfolio';
+import { skillCategories } from '@/data/portfolio';
 
 const colorMap = {
-  gold: { bg: 'bg-gold/8', text: 'text-gold-soft' },
-  cosmic: { bg: 'bg-cosmic-blue/8', text: 'text-cosmic-blue' },
-  purple: { bg: 'bg-nebula-purple/8', text: 'text-nebula-purple' },
-};
-
-const levelStyle = (level: string) => {
-  switch (level) {
-    case 'advanced':
-      return 'bg-gold/10 border-gold/25 text-gold-soft/80';
-    case 'intermediate':
-      return 'bg-cosmic-blue/8 border-cosmic-blue/20 text-cosmic-blue/70';
-    default:
-      return 'bg-white/[0.03] border-white/10 text-white/35';
-  }
+  gold: { bg: 'bg-gold/15', text: 'text-gold-soft', border: 'border-gold/30', badge: 'bg-gold/10 text-gold-soft border-gold/30' },
+  cosmic: { bg: 'bg-cosmic-blue/15', text: 'text-cosmic-blue', border: 'border-cosmic-blue/30', badge: 'bg-cosmic-blue/10 text-cosmic-blue border-cosmic-blue/30' },
+  purple: { bg: 'bg-nebula-purple/15', text: 'text-nebula-purple', border: 'border-nebula-purple/30', badge: 'bg-nebula-purple/10 text-nebula-purple border-nebula-purple/30' },
 };
 
 export default function SkillsSection() {
@@ -33,16 +22,16 @@ export default function SkillsSection() {
           transition={{ duration: 0.6 }}
           className="mb-10"
         >
-          <p className="font-mono text-[10px] text-gold-soft/60 tracking-[0.2em] uppercase mb-2">
+          <p className="font-mono text-xs text-gold-soft tracking-[0.2em] uppercase mb-2">
             // Skills
           </p>
-          <h2 className="font-space text-2xl md:text-3xl font-bold text-white">
+          <h2 className="font-rozha text-2xl md:text-3xl font-normal text-white">
             Technical <span className="text-gradient">Toolkit</span>
           </h2>
         </motion.div>
 
         {/* Skills Grid */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-3">
+        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-3.5">
           {skillCategories.map((category, index) => {
             const colors = colorMap[category.color];
             return (
@@ -50,56 +39,36 @@ export default function SkillsSection() {
                 key={category.title}
                 initial={{ opacity: 0, y: 16 }}
                 animate={isInView ? { opacity: 1, y: 0 } : {}}
-                transition={{ duration: 0.4, delay: index * 0.08 }}
-                className="border border-white/[0.06] rounded-lg p-4 hover:border-gold/8 transition-all duration-300 bg-white/[0.015]"
+                transition={{ duration: 0.4, delay: index * 0.06 }}
+                className="border border-white/15 rounded-xl p-4 hover:border-gold/30 transition-all duration-300 bg-white/[0.03] backdrop-blur-sm flex flex-col justify-between"
               >
                 {/* Category Header */}
-                <div className="flex items-center gap-2.5 mb-3">
-                  <div className={`w-7 h-7 rounded-md flex items-center justify-center ${colors.bg}`}>
-                    <category.icon className={`w-3.5 h-3.5 ${colors.text}`} />
+                <div>
+                  <div className="flex items-center gap-2.5 mb-3">
+                    <div className={`w-8 h-8 rounded-lg flex items-center justify-center ${colors.bg}`}>
+                      <category.icon className={`w-4 h-4 ${colors.text}`} />
+                    </div>
+                    <h3 className="font-rozha text-xs md:text-sm font-normal text-white tracking-wide">
+                      {category.title}
+                    </h3>
                   </div>
-                  <h3 className="font-space text-xs font-semibold text-white/85">
-                    {category.title}
-                  </h3>
-                </div>
 
-                {/* Skills */}
-                <div className="flex flex-wrap gap-1.5">
-                  {category.skills.map((skill) => (
-                    <span
-                      key={skill.name}
-                      className={`px-2 py-0.5 rounded border text-[10px] font-medium ${levelStyle(skill.level)}`}
-                    >
-                      {skill.name}
-                    </span>
-                  ))}
+                  {/* Skills badges */}
+                  <div className="flex flex-wrap gap-1.5">
+                    {category.skills.map((skill) => (
+                      <span
+                        key={skill}
+                        className={`px-2.5 py-1 rounded-md border text-xs font-mono font-medium ${colors.badge}`}
+                      >
+                        {skill}
+                      </span>
+                    ))}
+                  </div>
                 </div>
               </motion.div>
             );
           })}
         </div>
-
-        {/* Languages */}
-        <motion.div
-          initial={{ opacity: 0, y: 16 }}
-          animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.4, delay: 0.5 }}
-          className="mt-4 border border-white/[0.06] rounded-lg p-4 bg-white/[0.015]"
-        >
-          <h3 className="font-space text-xs font-semibold text-white/70 mb-2.5">
-            Languages
-          </h3>
-          <div className="flex flex-wrap gap-2">
-            {languages.map((lang) => (
-              <span
-                key={lang}
-                className="px-2.5 py-1 rounded bg-white/[0.03] border border-white/[0.06] text-[11px] text-white/50"
-              >
-                {lang}
-              </span>
-            ))}
-          </div>
-        </motion.div>
       </div>
     </section>
   );

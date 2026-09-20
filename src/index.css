@@ -50,16 +50,20 @@
 
   body {
     @apply bg-[var(--space-black)] text-[var(--star-white)] antialiased;
-    font-family: 'Inter', sans-serif;
+    font-family: 'Times New Roman', Times, Georgia, serif;
     overflow-x: hidden;
   }
 
   h1, h2, h3, h4, h5, h6 {
-    font-family: 'Space Grotesk', sans-serif;
-    letter-spacing: -0.02em;
+    font-family: 'Rozha One', serif;
+    letter-spacing: -0.01em;
   }
 
-  code, .mono {
+  p, span, li, a, label, td, th, blockquote, figcaption {
+    font-family: 'Times New Roman', Times, Georgia, serif;
+  }
+
+  code, .mono, pre {
     font-family: 'JetBrains Mono', monospace;
   }
 

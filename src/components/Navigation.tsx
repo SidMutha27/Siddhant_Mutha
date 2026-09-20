@@ -34,21 +34,9 @@ export default function Navigation() {
             : 'bg-transparent py-5'
         }`}
       >
-        <div className="max-w-7xl mx-auto px-6 flex items-center justify-between">
-          {/* Logo */}
-          <Link
-            to="/"
-            onClick={handleLinkClick}
-            className="font-space text-lg font-semibold text-white/90 hover:text-gold-soft transition-colors duration-200 flex items-center gap-1.5"
-          >
-            <span className="text-gold">S</span>M.
-            <span className="hidden sm:inline-block font-mono text-[10px] text-white/30 tracking-widest uppercase pl-1 border-l border-white/10">
-              Astrophysics & Eng
-            </span>
-          </Link>
-
-          {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center gap-1">
+        <div className="max-w-7xl mx-auto px-6 flex items-center justify-center relative min-h-[40px]">
+          {/* Desktop Navigation (Centered, balanced with SM logo removed) */}
+          <div className="hidden md:flex items-center gap-1 px-3 py-1.5 rounded-full bg-space-black/60 backdrop-blur-md border border-white/10 shadow-lg">
             {navItems.map((item) => {
               const isActive = location.pathname === item.path;
               return (
@@ -56,17 +44,17 @@ export default function Navigation() {
                   key={item.path}
                   to={item.path}
                   onClick={handleLinkClick}
-                  className={`relative px-3 py-2 text-xs font-mono uppercase tracking-wider transition-colors duration-200 ${
+                  className={`relative px-2.5 lg:px-3 py-1 text-[11px] lg:text-xs font-mono uppercase tracking-wider transition-colors duration-200 rounded-full ${
                     isActive
                       ? 'text-gold-soft font-medium'
-                      : 'text-white/50 hover:text-white/80'
+                      : 'text-white/70 hover:text-white'
                   }`}
                 >
                   {item.label}
                   {isActive && (
                     <motion.div
                       layoutId="activeNav"
-                      className="absolute bottom-0 left-2 right-2 h-[1.5px] bg-gradient-to-r from-transparent via-gold to-transparent"
+                      className="absolute inset-0 rounded-full bg-white/10 border border-gold/30 -z-10"
                       transition={{ type: 'spring', stiffness: 380, damping: 30 }}
                     />
                   )}
@@ -75,25 +63,27 @@ export default function Navigation() {
             })}
           </div>
 
-          {/* Mobile Menu Button */}
-          <button
-            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-            className="md:hidden w-8 h-8 flex flex-col items-center justify-center gap-1.5"
-            aria-label="Toggle menu"
-          >
-            <motion.span
-              animate={isMobileMenuOpen ? { rotate: 45, y: 6 } : { rotate: 0, y: 0 }}
-              className="block w-5 h-[1.5px] bg-white/70"
-            />
-            <motion.span
-              animate={isMobileMenuOpen ? { opacity: 0 } : { opacity: 1 }}
-              className="block w-5 h-[1.5px] bg-white/70"
-            />
-            <motion.span
-              animate={isMobileMenuOpen ? { rotate: -45, y: -6 } : { rotate: 0, y: 0 }}
-              className="block w-5 h-[1.5px] bg-white/70"
-            />
-          </button>
+          {/* Mobile Menu Button (Positioned on the right for clean balance) */}
+          <div className="flex md:hidden w-full items-center justify-end">
+            <button
+              onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+              className="w-10 h-10 rounded-lg bg-white/5 border border-white/10 flex flex-col items-center justify-center gap-1.5"
+              aria-label="Toggle menu"
+            >
+              <motion.span
+                animate={isMobileMenuOpen ? { rotate: 45, y: 6 } : { rotate: 0, y: 0 }}
+                className="block w-5 h-[1.5px] bg-white/80"
+              />
+              <motion.span
+                animate={isMobileMenuOpen ? { opacity: 0 } : { opacity: 1 }}
+                className="block w-5 h-[1.5px] bg-white/80"
+              />
+              <motion.span
+                animate={isMobileMenuOpen ? { rotate: -45, y: -6 } : { rotate: 0, y: 0 }}
+                className="block w-5 h-[1.5px] bg-white/80"
+              />
+            </button>
+          </div>
         </div>
       </motion.nav>
 
@@ -120,14 +110,14 @@ export default function Navigation() {
                     <Link
                       to={item.path}
                       onClick={handleLinkClick}
-                      className={`py-3 text-lg font-space font-medium border-b border-white/5 flex items-center justify-between ${
+                      className={`py-3 text-lg font-rozha border-b border-white/5 flex items-center justify-between ${
                         isActive
                           ? 'text-gold-soft'
-                          : 'text-white/60'
+                          : 'text-white/80'
                       }`}
                     >
                       <span>{item.label}</span>
-                      {isActive && <span className="w-1.5 h-1.5 rounded-full bg-gold" />}
+                      {isActive && <span className="w-2 h-2 rounded-full bg-gold" />}
                     </Link>
                   </motion.div>
                 );
@@ -135,7 +125,7 @@ export default function Navigation() {
             </div>
 
             <div className="pt-6 border-t border-white/5 text-center">
-              <p className="font-mono text-[11px] text-white/30">
+              <p className="font-mono text-xs text-white/50">
                 Siddhant Mutha · Research Portfolio
               </p>
             </div>
