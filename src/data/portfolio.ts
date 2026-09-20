@@ -477,7 +477,7 @@ export const workshops: Workshop[] = [
     organization: 'IUCAA ACE',
     location: 'Online',
     date: 'Self-learning',
-    description: 'Self-learning through recorded lectures and schools covering: Introductory Astronomy & Astrophysics, Astronomical Data Analysis using Python, Fourier Transforms, Radio Astronomy Winter School — Sessions 13 & 14',
+    description: 'Self-learning through recorded lectures and schools covering: Introductory Astronomy & Astrophysics, Astronomical Data Analysis using Python, Fourier Transforms, Radio Astronomy Winter School  Sessions 13 & 14',
     details: [
       'Introductory Astronomy & Astrophysics',
       'Astronomical Data Analysis using Python',
@@ -485,6 +485,7 @@ export const workshops: Workshop[] = [
       'Radio Astronomy Winter School  Sessions 13 & 14',
     ],
     linkText: 'IUCAA ACE — Playlists',
+    linkUrl: 'https://www.youtube.com/@ACEIUCAA/playlists',
     icon: Telescope,
   },
   {
@@ -493,7 +494,8 @@ export const workshops: Workshop[] = [
     location: 'Online',
     date: 'Self-learning',
     description: 'Followed recorded lectures from RASS, covering astronomy, astrophysics, radio astronomy, and related research topics.',
-    linkText: 'Raman Research Institute — YouTube',
+    linkText: 'Raman Research Institute YouTube',
+    linkUrl: 'https://www.youtube.com/@RamanResearchInstitute',
     icon: Telescope,
   },
 ];
@@ -749,6 +751,7 @@ export const navItems = [
   { label: 'Research', path: '/research' },
   { label: 'Projects', path: '/projects' },
   { label: 'Skills', path: '/skills' },
+  { label: 'Workshops', path: '/workshops' },
   { label: 'Community', path: '/community' },
   { label: 'Gallery', path: '/gallery' },
   { label: 'Contact', path: '/contact' },
