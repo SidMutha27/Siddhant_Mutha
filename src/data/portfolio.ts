@@ -121,7 +121,7 @@ I just want to build the tools to hear it.`,
 };
 
 // 2. About Page Content
-export const aboutIntro = 'Coming from a rural background, my journey has been about getting exposure to the most advanced labs, instruments, ideas  and great ppl , moving from learning science to actually building and experimenting with it.';
+export const aboutIntro = 'Coming from a rural background, my journey has taken me from learning science to building and experimenting with it. I’ve had opportunities to work with advanced projects, labs, instruments, and ideas, while constantly exploring and learning across fields. I hope to gain more exposure to advanced research, technology, and people in the years ahead.';
 
 export const educationData: Education[] = [
   {
@@ -348,7 +348,7 @@ export const skillCategories: SkillCategory[] = [
     title: 'AI / ML',
     icon: Brain,
     color: 'gold',
-    skills: ['Machine Learning', 'Clustering', 'DBSCAN', 'HDBBSCAN', 'Random Forest etc'],
+    skills: ['Machine Learning', 'Clustering', 'DBSCAN', 'HDBSCAN', 'Random Forest'],
   },
   {
     title: 'Systems & Environment',
@@ -557,7 +557,7 @@ export const communityItems: CommunityItem[] = [
     organization: 'Stargazing Camp @ Rajgad',
     location: 'Rajgad, Maharashtra',
     period: 'Dec. 2025',
-    description: 'Organised a night-sky observation camp with telescope observations and meteor-shower watching, including the Geminids.',
+    description: 'Organised a night-sky observation camp and meteor-shower watching, including the Geminids.',
     icon: Star,
     color: 'gold',
   },
@@ -582,144 +582,176 @@ export const communityItems: CommunityItem[] = [
 // 8. Gallery Albums (Album-driven, data-powered)
 export const galleryAlbums: GalleryAlbum[] = [
   {
+    id: 'prof_lorimer_meeting',
+    title: 'A Lunch with Prof. Duncan Lorimer',
+    subtitle: 'A dream come true moments; having lunch with the creator of my field..... ',
+    coverImage: './assets/profLorimer_meeting/me_with_lorimer.jpg',
+    date: 'Jan. 2026',
+    location: 'NCRA, Pune',
+    driveLink: 'https://drive.google.com/drive/folders/dummy-rf-prototyping-folder-id',
+    photos: [
+      {
+        id: 'me_with_lorimer',
+        image: './assets/profLorimer_meeting/me_with_lorimer.jpg',
+        caption: 'Meeting one of the pioneers of the field I am passionate about. ',
+        date: 'Jan. 2025',
+        location: 'NCRA, Pune',
+      },
+      {
+        id: 'sketch_lorimer',
+        image: './assets/profLorimer_meeting/sketch_lorimer.jpg',
+        caption: 'A little piece of art for someone who inspired me ',
+        date: 'Jan. 2026',
+        location: 'NCRA, Pune',
+      },
+      {
+        id: 'sketch_lorimer_1',
+        image: './assets/profLorimer_meeting/sketch_lorimer1.jpg',
+        caption: 'Looking at the Sketch !! A small moment I will always remember.',
+        date: 'Jan. 2026',
+        location: 'NCRA, Pune',
+      },
+      {
+        id: 'lunch with prof lorimer',
+        image: './assets/profLorimer_meeting/lunch.jpg',
+        caption: 'Lunch with prof. Duncian lorimer and the amazing SPOTLIGHT team',
+        date: 'Jan. 2026',
+        location: 'NCRA, Pune',
+      },
+    ],
+  },
+
+  {
     id: 'gmrt',
-    title: 'GMRT Khodad',
-    subtitle: 'Giant Metrewave Radio Telescope — interferometric array observations',
-    coverImage: './assets/deep-space.jpg',
-    date: 'Dec. 2024',
+    title: 'GMRT 📡🌌',
+    subtitle: 'Giant Metrewave Radio Telescope ',
+    coverImage: './assets/GMRT/GMRT_1.jpeg',
+    date: 'Jan. 2026',
     location: 'Khodad, Maharashtra',
     driveLink: 'https://drive.google.com/drive/folders/dummy-gmrt-observations-folder-id',
     photos: [
       {
         id: 'gmrt-1',
-        image: './assets/deep-space.jpg',
-        caption: 'GMRT dish array as seen from the central square — 30 fully steerable dishes spanning 25 km.',
-        date: 'Dec. 2024',
+        image: './assets/GMRT/gmrt_dish_night.jpeg',
+        caption: 'When the night sky becomes a canvas for human curiosity.',
+        date: 'Mar. 2026',
         location: 'Khodad, Maharashtra',
       },
       {
         id: 'gmrt-2',
-        image: './assets/galaxy-bg.jpg',
-        caption: 'Control room during live FRB observation session with real-time signal monitoring.',
-        date: 'Dec. 2024',
+        image: './assets/GMRT/rangoli.jpg',
+        caption: 'Rangoli art GMRT.',
+        date: 'Oct. 2025',
         location: 'GMRT, Khodad',
       },
       {
         id: 'gmrt-3',
-        image: './assets/deep-space.jpg',
-        caption: 'Receiver cabin and RF backend electronics inspection.',
-        date: 'Dec. 2024',
+        image: './assets/GMRT/gmrt_cat.jpg ',
+        caption: 'GMRT pet n my fav animal',
+        date: 'Dec. 2025',
         location: 'GMRT, Khodad',
       },
     ],
   },
-  {
-    id: 'ska',
-    title: 'SKA Exhibit — IUCAA',
-    subtitle: 'Square Kilometre Array scaled exhibit & receiver demonstration',
-    coverImage: './assets/ska.jpg',
-    date: 'Feb. 2024',
-    location: 'IUCAA, Pune',
-    driveLink: 'https://drive.google.com/drive/folders/dummy-ska-exhibit-folder-id',
-    photos: [
-      {
-        id: 'ska-1',
-        image: './assets/ska.jpg',
-        caption: 'SKA-Mid scaled exhibit model with full receiver chain explanation.',
-        date: 'Feb. 2024',
-        location: 'IUCAA, Pune',
-      },
-      {
-        id: 'ska-2',
-        image: './assets/deep-space.jpg',
-        caption: 'Wideband receiver front-end hardware demonstration at the IUCAA open day.',
-        date: 'Feb. 2024',
-        location: 'IUCAA, Pune',
-      },
-    ],
-  },
+
   {
     id: 'nius',
     title: 'NIUS Science Camp',
-    subtitle: 'National Initiative for Undergraduate Science — HBCSE, Mumbai',
-    coverImage: './assets/galaxy-bg.jpg',
-    date: 'Jan. 2025',
+    subtitle: 'National Initiative for Undergraduate Science at HBCSE, Mumbai',
+    coverImage: './assets/NIUS/hbcse_grp.jpeg',
+    date: 'July. 2024',
     location: 'HBCSE, Mumbai',
     driveLink: 'https://drive.google.com/drive/folders/dummy-nius-camp-folder-id',
     photos: [
       {
         id: 'nius-1',
-        image: './assets/galaxy-bg.jpg',
-        caption: 'NIUS cohort at HBCSE during the 10-day intensive science residential camp.',
-        date: 'Jan. 2025',
+        image: './assets/NIUS/hbcse_grp.jpeg',
+        caption: '',
+        date: 'July. 2024',
         location: 'HBCSE, Mumbai',
       },
       {
         id: 'nius-2',
-        image: './assets/deep-space.jpg',
-        caption: 'Lab sessions — experimental physics and instrumentation at HBCSE.',
-        date: 'Jan. 2025',
+        image: './assets/NIUS/sid nius with anwesh sir.jpg',
+        caption: '',
+        date: 'July. 2024',
         location: 'HBCSE, Mumbai',
       },
+      {
+        id: 'nius-3',
+        image: './assets/NIUS/hbcse camp.jpg',
+        caption: '',
+        date: 'July. 2024',
+        location: 'HBCSE, Mumbai',
+      },
+      {
+        id: 'nius-4',
+        image: './assets/NIUS/NIUS2024.png',
+        caption: '',
+        date: 'July. 2024',
+        location: 'HBCSE, Mumbai',
+      }
     ],
   },
-  {
-    id: 'stargazing',
-    title: 'Stargazing Camp — Rajgad',
-    subtitle: 'Night-sky observation, telescope sessions & Geminids meteor shower',
-    coverImage: './assets/galaxy-bg.jpg',
-    date: 'Dec. 2025',
-    location: 'Rajgad, Maharashtra',
-    driveLink: 'https://drive.google.com/drive/folders/dummy-rajgad-astronomy-folder-id',
-    photos: [
-      {
-        id: 'sg-1',
-        image: './assets/galaxy-bg.jpg',
-        caption: 'Deep-sky astrophotography and transient observation session during night camp.',
-        date: 'Dec. 2025',
-        location: 'Rajgad, Maharashtra',
-      },
-      {
-        id: 'sg-2',
-        image: './assets/deep-space.jpg',
-        caption: 'Geminids meteor shower watching session — over 40 meteors observed in 2 hours.',
-        date: 'Dec. 2025',
-        location: 'Rajgad Fort, Maharashtra',
-      },
-      {
-        id: 'sg-3',
-        image: './assets/galaxy-bg.jpg',
-        caption: 'Dobsonian telescope setup for deep-sky object hunting — Orion Nebula, Pleiades.',
-        date: 'Dec. 2025',
-        location: 'Rajgad, Maharashtra',
-      },
-    ],
-  },
-  {
-    id: 'receiver-lab',
-    title: 'RF & Receiver Lab',
-    subtitle: 'Radio telescope receiver backend and RF filter prototyping testbed',
-    coverImage: './assets/deep-space.jpg',
-    date: 'Oct. 2024',
-    location: 'Fergusson College, Pune',
-    driveLink: 'https://drive.google.com/drive/folders/dummy-rf-prototyping-folder-id',
-    photos: [
-      {
-        id: 'rf-1',
-        image: './assets/deep-space.jpg',
-        caption: 'RF filter prototype on breadboard — testing bandpass characteristics at 1.4 GHz.',
-        date: 'Oct. 2024',
-        location: 'Fergusson College, Pune',
-      },
-      {
-        id: 'rf-2',
-        image: './assets/galaxy-bg.jpg',
-        caption: 'Spectrum analyser output showing signal integrity and noise floor measurements.',
-        date: 'Oct. 2024',
-        location: 'Fergusson College, Pune',
-      },
-    ],
-  },
+
+  // {
+  //   id: 'stargazing',
+  //   title: 'Stargazing Camp — Rajgad',
+  //   subtitle: 'Night-sky observation, telescope sessions & Geminids meteor shower',
+  //   coverImage: './assets/galaxy-bg.jpg',
+  //   date: 'Dec. 2025',
+  //   location: 'Rajgad, Maharashtra',
+  //   driveLink: 'https://drive.google.com/drive/folders/dummy-rajgad-astronomy-folder-id',
+  //   photos: [
+  //     {
+  //       id: 'sg-1',
+  //       image: './assets/galaxy-bg.jpg',
+  //       caption: 'Deep-sky astrophotography and transient observation session during night camp.',
+  //       date: 'Dec. 2025',
+  //       location: 'Rajgad, Maharashtra',
+  //     },
+  //     {
+  //       id: 'sg-2',
+  //       image: './assets/deep-space.jpg',
+  //       caption: 'Geminids meteor shower watching session — over 40 meteors observed in 2 hours.',
+  //       date: 'Dec. 2025',
+  //       location: 'Rajgad Fort, Maharashtra',
+  //     },
+  //     {
+  //       id: 'sg-3',
+  //       image: './assets/galaxy-bg.jpg',
+  //       caption: 'Dobsonian telescope setup for deep-sky object hunting — Orion Nebula, Pleiades.',
+  //       date: 'Dec. 2025',
+  //       location: 'Rajgad, Maharashtra',
+  //     },
+  //   ],
+  // },
+  // {
+  //   id: 'ska',
+  //   title: 'SKA Exhibit — IUCAA',
+  //   subtitle: 'Square Kilometre Array scaled exhibit & receiver demonstration',
+  //   coverImage: './assets/ska.jpg',
+  //   date: 'Feb. 2024',
+  //   location: 'IUCAA, Pune',
+  //   driveLink: 'https://drive.google.com/drive/folders/dummy-ska-exhibit-folder-id',
+  //   photos: [
+  //     {
+  //       id: 'ska-1',
+  //       image: './assets/ska.jpg',
+  //       caption: 'SKA-Mid scaled exhibit model with full receiver chain explanation.',
+  //       date: 'Feb. 2024',
+  //       location: 'IUCAA, Pune',
+  //     },
+  //     {
+  //       id: 'ska-2',
+  //       image: './assets/deep-space.jpg',
+  //       caption: 'Wideband receiver front-end hardware demonstration at the IUCAA open day.',
+  //       date: 'Feb. 2024',
+  //       location: 'IUCAA, Pune',
+  //     },
+  //   ],
+  // },
+
 ];
 
 // 9. Contact Info (MOBILE NUMBER COMPLETELY REMOVED)

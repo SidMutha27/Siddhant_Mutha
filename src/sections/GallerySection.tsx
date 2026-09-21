@@ -281,7 +281,8 @@ export default function GallerySection() {
                 </h2>
                 <p className="text-white/60 text-sm mt-2 max-w-xl leading-relaxed">
                   Visual logs from observatory visits, telescope prototyping, astrophysics summer schools, and stargazing sessions.
-                  Click any album to explore photos.
+                  Click any album to explore photos.<br></br>
+                  (under construction!....temporary placeholders)
                 </p>
               </motion.div>
 
