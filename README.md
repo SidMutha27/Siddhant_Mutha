@@ -1,4 +1,5 @@
 
+
 # Siddhant Mutha Website
 
 A personal website of **Siddhant Mutha (me)**, a curious observer interested in Physics, Electronics, Radio Astronomy, and scientific instrumentation.
@@ -120,6 +121,7 @@ public/
 > **Note:** Portfolio content is centralized in:  
 > `src/data/portfolio.ts`  
 
+<<<<<<< HEAD
 
 
 
@@ -129,3 +131,4 @@ public/
   [https://svs.gsfc.nasa.gov/20378/](https://svs.gsfc.nasa.gov/20378/)
 - **Deep field visual inspiration:** James Webb Space Telescope (JWST)
 - **Website design, development, and custom visual effects:** Siddhant Mutha
+=======
