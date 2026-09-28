@@ -131,4 +131,3 @@ public/
   [https://svs.gsfc.nasa.gov/20378/](https://svs.gsfc.nasa.gov/20378/)
 - **Deep field visual inspiration:** James Webb Space Telescope (JWST)
 - **Website design, development, and custom visual effects:** Siddhant Mutha
-=======
