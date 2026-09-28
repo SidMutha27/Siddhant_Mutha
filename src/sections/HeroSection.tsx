@@ -183,7 +183,7 @@ export default function HeroSection({ isLoaded, heroVideoPlayed, onHeroVideoPlay
           transition={{ duration: 0.7, delay: 0.35 }}
           className="font-mono text-sm md:text-base text-gold-soft tracking-widest uppercase mb-6 font-medium"
         >
-          Physics &amp; Electronics Researcher
+          Physics ML &amp; Electronics 
         </motion.p>
 
         {/* Description */}
@@ -194,7 +194,7 @@ export default function HeroSection({ isLoaded, heroVideoPlayed, onHeroVideoPlay
           className="max-w-2xl mx-auto text-white/90 text-base md:text-lg leading-relaxed mb-10"
         >
           Exploring the universe through radio astronomy, instrumentation, and scientific computing.
-          Currently researching Fast Radio Bursts at NCRA-TIFR while pursuing degrees in Physics and Electronic Systems.
+          was researching Fast Radio Bursts in SPOTLIGHT at NCRA-TIFR while pursuing degrees in Physics and Electronic Systems.
         </motion.p>
 
         {/* CTA Buttons */}

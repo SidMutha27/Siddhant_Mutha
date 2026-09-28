@@ -112,7 +112,7 @@ export interface ContactItem {
 export const homeIntro: HomeIntro = {
   tagline: 'On the way to becoming a researcher, engineer & truly curious observer.',
   statement: `About me:
-I’m an Udyogi Baal ( a creative/innovative kid who hates sitting idle). I like getting involved in interesting + challenging projects. If I have no idea how something works, even better but I like it when my brain gets a good workout. I’m okay being dumb,but A day without learning, building, breaking, or fixing something = probably a bad day for me .
+I’m an Udyogi Baal ( a creative/innovative kid who hates sitting idle). I like getting involved in interesting + challenging projects. If I have no idea how something works, even better. I like it when my brain gets a good workout. I’m okay being dumb,but A day without learning, building, breaking, or fixing something = probably a bad day for me .
 
 Working at the intersection of Physics, Electronics, Engineering + ML sometimes. I’m in a one-sided love with FRBs, GMRT is the gf, while SKA + DSA-2000 are definitely my crushes.
 Currently pursuing Physics + Electronic Systems, I like moving between theory, hardware, simulations, data + ML. I believe the best science happens when theory × engineering × observation come together.
@@ -693,6 +693,25 @@ export const galleryAlbums: GalleryAlbum[] = [
       }
     ],
   },
+  {
+    id: 'Dr. Bhargav Vaidya',
+    title: 'best mentor ever',
+    subtitle: '@ PRAVAH lab DAASE,IIT Indore ',
+    coverImage: './assets/profBhargav/me_with_bhargav.jpg',
+    date: 'DEC. 2025',
+    location: 'IIT Indore',
+    driveLink: 'https://drive.google.com/drive/folders/dummy-rf-prototyping-folder-id',
+    photos: [
+      {
+        id: 'Dr. Bhargav Vaidya',
+        image: './assets/profBhargav/me_with_bhargav.jpg',
+        caption: 'Best Bhargav sir & me alongside  of Suryansh (plasma Chamber) ',
+        date: 'Dec. 2025',
+        location: 'IIT Indore',
+      },
+      
+    ],
+  },
 
   // {
   //   id: 'stargazing',
@@ -780,7 +799,7 @@ export const contactInfo: ContactItem[] = [
 export const navItems = [
   { label: 'Home', path: '/' },
   { label: 'About', path: '/about' },
-  { label: 'Research', path: '/research' },
+  { label: 'Experiences', path: '/research' },
   { label: 'Projects', path: '/projects' },
   { label: 'Skills', path: '/skills' },
   { label: 'Workshops', path: '/workshops' },

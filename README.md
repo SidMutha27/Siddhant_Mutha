@@ -1,143 +1,131 @@
-# Siddhant Mutha — Research & Engineering Portfolio
 
-An interactive, deep-space themed academic and research portfolio for **Siddhant Mutha**, specializing in Physics, Electronics Engineering, and Radio Astronomy (FRB detection with GMRT / NCRA-TIFR).
+# Siddhant Mutha Website
 
----
+A personal website of **Siddhant Mutha (me)**, a curious observer interested in Physics, Electronics, Radio Astronomy, and scientific instrumentation.
 
-## 🚀 Key Features & Highlights
+The website uses a deep space visual theme inspired by astronomy, scientific visualization, and observatory interfaces.
 
-- **Aesthetic**: Deep-field astrophotography theme with realistic CSS-rendered planets, twinkling starfield, and Gamma-Ray Burst (GRB) sequence.
-- **Centralized Data Layer**: All portfolio content (research, projects, education, skills, workshops, community initiatives, contact info) is defined in a single typed configuration file: [`src/data/portfolio.ts`](src/data/portfolio.ts).
-- **Multi-Page Routing**: Powered by `react-router` with `HashRouter` ensuring seamless navigation and 100% compatibility with GitHub Pages (no 404 on page refresh).
-- **Responsive & Performant**: Built with Vite 7, React 19, Tailwind CSS 3.4, and Framer Motion 12 with lightweight micro-animations.
+
 
 ---
 
-## 🛠 Tech Stack
+## Technical Stack
 
-- **Framework**: [React 19](https://react.dev/) + [TypeScript](https://www.typescriptlang.org/)
-- **Bundler**: [Vite 7](https://vite.dev/)
-- **Routing**: [React Router v7](https://reactrouter.com/) (`HashRouter`)
-- **Styling**: [Tailwind CSS](https://tailwindcss.com/)
-- **Animations**: [Framer Motion](https://www.framer.com/motion/)
-- **Icons**: [Lucide React](https://lucide.dev/)
+- **React 19** for the user interface
+- **TypeScript** for type-safe development
+- **Vite 7** for development and production builds
+- **React Router v7** with `HashRouter` for navigation
+- **Tailwind CSS 3.4** for styling
+- **Framer Motion 12** for animations and page transitions
+- **Lucide React** for icons
+- **HTML Canvas** for the animated starfield
+- **CSS animations and gradients** for planets, orbital rings, glows, and visual effects
 
 ---
 
-## 📁 Project Architecture
+## Visual Theme
 
+The website is designed around a **deep space and astronomy theme**, combining a CV with a visual experience inspired by the night sky, observatories, and scientific instruments.
+
+### Solar System Loading Animation
+
+The loading screen features a custom animated solar system instead of a standard loading spinner.
+
+It includes:
+
+- Animated planets with CSS gradients
+- Saturn and its rings
+- Jupiter with its Great Red Spot
+- Animated solar surface and solar burst effects
+- Orbital motion
+- Animated loading messages and progress
+
+### Animated Starfield
+
+The background uses an HTML Canvas based procedural starfield instead of a static background.
+
+It includes:
+
+- Moving stars
+- Twinkling stars
+- Different star sizes and brightness
+- Cosmic dust and nebula effects
+- Subtle mouse interaction
+- Connecting star effects
+
+### Hero Video
+
+The hero section uses the NASA Scientific Visualization Studio's **GRB Afterglow** visualization because its visual style fits the website's interest in transient astronomy and Fast Radio Bursts.
+
+> **Source and credit:** NASA / NASA Scientific Visualization Studio  
+> [https://svs.gsfc.nasa.gov/20378/](https://svs.gsfc.nasa.gov/20378/)
+
+**File used:**
+
+`GRB_afterglow_1080_30fps_h264.mp4`
+
+### Deep Field Background
+
+The website uses a lightweight deep field style background inspired by **James Webb Space Telescope (JWST)** imagery.
+
+The original imagery is very high resolution, so a lighter version was prepared for the website to reduce loading time while keeping the overall visual atmosphere.
+
+### Scroll and Page Animations
+
+Framer Motion is used for subtle:
+
+- Page transitions
+- Scroll based section reveals
+- Fade and slide animations
+- Hover interactions
+- Navigation transitions
+
+The animations are kept lightweight so that the website remains smooth while maintaining the space theme.
+
+---
+
+## Project Structure
+
+```text
+src/
+├── components/
+│   ├── Navigation.tsx
+│   ├── Footer.tsx
+│   ├── PageLayout.tsx
+│   ├── ParticleField.tsx
+│   └── SolarSystemLoader.tsx
+│
+├── data/
+│   └── portfolio.ts
+│
+├── sections/
+│   ├── HeroSection.tsx
+│   ├── AboutSection.tsx
+│   ├── EducationSection.tsx
+│   ├── ExperienceSection.tsx
+│   ├── ProjectsSection.tsx
+│   ├── SkillsSection.tsx
+│   ├── WorkshopsSection.tsx
+│   ├── CommunitySection.tsx
+│   └── ContactSection.tsx
+│
+├── App.tsx
+├── main.tsx
+└── index.css
+
+public/
+└── assets/
 ```
-app/
-├── src/
-│   ├── components/          # Reusable UI elements
-│   │   ├── Navigation.tsx   # Top navigation with active route indicators
-│   │   ├── Footer.tsx       # Bottom footer with quick links
-│   │   ├── PageLayout.tsx   # Animated route wrapper (Framer Motion)
-│   │   ├── ParticleField.tsx# Deep-field canvas starfield with nebulae & twinkling
-│   │   └── SolarSystemLoader.tsx # Realistic CSS gradient planets loader
-│   ├── data/
-│   │   └── portfolio.ts     # ⭐ Centralized data source for all sections
-│   ├── sections/            # Clean presentation components
-│   │   ├── HeroSection.tsx
-│   │   ├── AboutSection.tsx
-│   │   ├── EducationSection.tsx
-│   │   ├── ExperienceSection.tsx
-│   │   ├── ProjectsSection.tsx
-│   │   ├── SkillsSection.tsx
-│   │   ├── WorkshopsSection.tsx
-│   │   ├── CommunitySection.tsx
-│   │   └── ContactSection.tsx
-│   ├── App.tsx              # Application shell & HashRouter page routes
-│   ├── main.tsx             # React DOM root initialization
-│   └── index.css            # Deep-space color variables & utility classes
-├── public/
-│   └── assets/              # Media assets (GRB hero video, photos, deep-space imagery)
-├── vite.config.ts           # Vite configuration with relative base './'
-└── package.json
-```
 
----
+> **Note:** Portfolio content is centralized in:  
+> `src/data/portfolio.ts`  
 
-## ✏️ How to Update or Add Content
 
-All portfolio content lives in [`src/data/portfolio.ts`](src/data/portfolio.ts). To add or edit items, simply modify the corresponding array:
 
-### 1. Adding a New Research Experience
-Add an object to `experiences`:
-```typescript
-{
-  id: 'new-research-lab',
-  role: 'Research Fellow',
-  organization: 'Observatory / Institute',
-  location: 'City, Country',
-  period: 'Jan 2026 – Present',
-  description: 'Overview of the research focus and responsibilities.',
-  details: [
-    'Key finding or development milestone 1',
-    'Key finding or development milestone 2',
-  ],
-  tags: ['Radio Astronomy', 'Python', 'Signal Processing'],
-  icon: Radio,
-  color: 'gold', // 'gold' | 'cosmic' | 'purple'
-}
-```
 
-### 2. Adding a New Project
-Add an object to `projects`:
-```typescript
-{
-  title: 'Project Title',
-  subtitle: 'Hardware / Software / Research Domain',
-  description: 'Concise summary of what the system does and why it was built.',
-  details: [
-    'Technical feature or benchmark 1',
-    'Technical feature or benchmark 2',
-  ],
-  icon: Cpu,
-  tags: ['FPGA', 'Verilog', 'DSP'],
-  color: 'cosmic',
-  year: '2025',
-  links: [{ label: 'Source', href: 'https://github.com/...' }],
-}
-```
+## Credits
 
-### 3. Adding Workshops or Community Activities
-Similarly, update `workshops[]`, `communityItems[]`, or `educationData[]` directly in `portfolio.ts`.
-
----
-
-## 💻 Local Development
-
-1. **Install dependencies**:
-   ```bash
-   npm install
-   ```
-
-2. **Run local dev server**:
-   ```bash
-   npm run dev
-   ```
-   Open your browser to `http://localhost:3000` (or the port specified in terminal output).
-
-3. **Type-check and Build**:
-   ```bash
-   npm run build
-   ```
-
-4. **Preview Production Build**:
-   ```bash
-   npm run preview
-   ```
-
----
-
-## 🌐 GitHub Pages Deployment
-
-The application is configured with `base: './'` in `vite.config.ts` and uses `HashRouter` (`/#/about`, `/#/research`, etc.) so that refreshing routes on static hosting environments like GitHub Pages works without 404 errors.
-
-### Deploying to GitHub Pages:
-1. Build the production bundle:
-   ```bash
-   npm run build
-   ```
-2. Deploy the `dist/` directory using the `gh-pages` CLI or configure GitHub Actions to deploy from the `dist` folder upon push to `main`.
+- **GRB Afterglow visualization:** NASA / NASA Scientific Visualization Studio  
+  [https://svs.gsfc.nasa.gov/20378/](https://svs.gsfc.nasa.gov/20378/)
+- **Deep field visual inspiration:** James Webb Space Telescope (JWST)
+- **Website design, development, and custom visual effects:** Siddhant Mutha
