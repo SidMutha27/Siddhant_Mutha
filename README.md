@@ -121,7 +121,7 @@ public/
 > **Note:** Portfolio content is centralized in:  
 > `src/data/portfolio.ts`  
 
-<<<<<<< HEAD
+
 
 
 
